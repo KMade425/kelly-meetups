@@ -11,6 +11,7 @@ import { Button, buttonVariants } from '@/components/ui'
 import HostName from '@/components/HostName'
 import { downloadIcs, mapUrl } from '@/lib/calendar'
 import RsvpControls from '@/components/RsvpControls'
+import RsvpList from '@/components/RsvpList'
 
 type MeetupEvent = {
   title: string
@@ -85,6 +86,7 @@ export default function EventViewPage() {
         )}
 
         <RsvpControls eventId={event.recordId} capacity={e.capacity} hostId={event.createdBy} />
+        <RsvpList eventId={event.recordId} />
       </div>
     </div>
   )
