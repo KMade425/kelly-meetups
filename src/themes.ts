@@ -18,6 +18,16 @@
 
 export const THEMES = [
   {
+    id: 'meetup',
+    label: 'Meetup',
+    description: 'The app theme: white page with purple buttons and links.',
+  },
+  {
+    id: 'meetup-dark',
+    label: 'Meetup dark',
+    description: 'Dark version of the app theme, chosen with the header toggle.',
+  },
+  {
     id: 'slate',
     label: 'Slate',
     description: 'Neutral dark placeholder default. Replace with your own theme.',
@@ -36,6 +46,29 @@ export function getActiveTheme(): ThemeId {
   if (typeof document === 'undefined') return 'slate'
   const id = document.documentElement.getAttribute('data-theme') as ThemeId | null
   return id ?? 'slate'
+}
+
+/**
+ * Light/dark toggle. Light ('meetup') is the default; picking dark is
+ * remembered in this browser. index.html reads the same key before the page
+ * paints, so a dark-mode visitor never sees a light flash.
+ */
+export const LIGHT_THEME = 'meetup'
+export const DARK_THEME = 'meetup-dark'
+const THEME_KEY = 'theme'
+
+export function isDarkTheme(): boolean {
+  return getActiveTheme() === DARK_THEME
+}
+
+export function setDarkTheme(dark: boolean): void {
+  document.documentElement.setAttribute('data-theme', dark ? DARK_THEME : LIGHT_THEME)
+  try {
+    if (dark) localStorage.setItem(THEME_KEY, 'dark')
+    else localStorage.removeItem(THEME_KEY)
+  } catch {
+    // Storage can be blocked (private mode); the toggle still works for this visit.
+  }
 }
 
 /** Look up a theme entry by id, or fall back to the first theme. */

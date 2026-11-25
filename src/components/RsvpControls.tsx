@@ -18,8 +18,18 @@ const CHOICES: { value: RsvpChoice; label: string }[] = [
   { value: 'not-going', label: 'Not going' },
 ]
 
-export default function RsvpControls({ eventId, capacity }: { eventId: string; capacity?: number }) {
+export default function RsvpControls({
+  eventId,
+  capacity,
+  hostId,
+}: {
+  eventId: string
+  capacity?: number
+  /** The event's creator. The host doesn't RSVP to their own event. */
+  hostId: string
+}) {
   const { isSignedIn, userId } = useAuth()
+  const isHost = isSignedIn && userId === hostId
   const { records } = useQuery<Rsvp>('rsvps', { where: { eventId } })
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -47,7 +57,9 @@ export default function RsvpControls({ eventId, capacity }: { eventId: string; c
         {waitlistCount > 0 && ` · ${waitlistCount} waitlisted`}
       </p>
 
-      {isSignedIn && (
+      {isHost && <p className="text-sm font-medium text-primary">You're hosting this event.</p>}
+
+      {isSignedIn && !isHost && (
         <div className="flex flex-wrap gap-2">
           {CHOICES.map((c) => (
             <Button

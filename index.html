@@ -4,7 +4,7 @@
   To switch themes, change `data-theme` to any id defined in src/themes.ts.
   Color values per theme live in src/themes.css.
 -->
-<html lang="en" data-theme="slate">
+<html lang="en" data-theme="meetup">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -20,8 +20,19 @@
     <style>
       html { background-color: #0a0a0a; color-scheme: dark; }
       html[data-theme="paper"] { background-color: #ffffff; color-scheme: light; }
+      html[data-theme="meetup"] { background-color: #ffffff; color-scheme: light; }
+      html[data-theme="meetup-dark"] { background-color: #0f0e17; color-scheme: dark; }
       /* Add one line per theme you create, mirroring its --color-background. */
     </style>
+    <!-- Light is the default; apply a saved dark choice before first paint
+         (same key as setDarkTheme in src/themes.ts). -->
+    <script>
+      try {
+        if (localStorage.getItem('theme') === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'meetup-dark')
+        }
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <div id="root"></div>

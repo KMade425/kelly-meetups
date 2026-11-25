@@ -12,7 +12,7 @@ Live: https://kelly-meetups.app.space
   - Going on a full event puts you on the **waitlist**.
   - When someone who was going leaves, the **longest-waiting** person is promoted automatically.
 - **Live counts.** "3 / 10 going · 2 waitlisted" updates in every open browser without refreshing.
-- **Add to calendar** (downloads an `.ics` file for Google, Apple or Outlook) and **Open in map** (OpenStreetMap search) on each event's page.
+- **Add to calendar** (downloads an `.ics` file for Google, Apple or Outlook) and **Open in map** (Google Maps search) on each event's page.
 - **Shows who's hosting** each event to signed-in users.
 
 ## How it's built

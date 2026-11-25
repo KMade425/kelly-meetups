@@ -51,7 +51,7 @@ export function downloadIcs(event: CalendarEvent): void {
   URL.revokeObjectURL(url)
 }
 
-/** A map search for the location text. OpenStreetMap needs no API key. */
+/** A Google Maps search for the location text. The Maps URL API needs no API key. */
 export function mapUrl(location: string): string {
-  return `https://www.openstreetmap.org/search?query=${encodeURIComponent(location)}`
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location)}`
 }

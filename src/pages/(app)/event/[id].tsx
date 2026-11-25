@@ -48,7 +48,7 @@ export default function EventViewPage() {
         ← Back to events
       </Link>
 
-      <div className="rounded-lg border border-border bg-card p-5">
+      <div className="rounded-xl border border-border bg-card p-5 shadow-[0_1px_2px_rgba(40,32,120,0.06),0_1px_3px_rgba(40,32,120,0.05)]">
         <h1 className="text-2xl font-semibold text-foreground">{e.title}</h1>
         <p className="mt-1 text-sm text-muted-foreground">
           {new Date(e.startsAt).toLocaleString()} · {e.location}
@@ -84,7 +84,7 @@ export default function EventViewPage() {
           <p className="mt-4 text-sm text-muted-foreground">No description.</p>
         )}
 
-        <RsvpControls eventId={event.recordId} capacity={e.capacity} />
+        <RsvpControls eventId={event.recordId} capacity={e.capacity} hostId={event.createdBy} />
       </div>
     </div>
   )

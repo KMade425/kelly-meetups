@@ -36,6 +36,11 @@ export const actions: Record<string, ActionHandler<Env>> = {
     }
     const capacity = eventResult.data.record.data.capacity
 
+    // The host runs the event; they don't RSVP to it.
+    if (eventResult.data.record.createdBy === userId) {
+      return { success: false, error: "You're hosting this event, so you don't need to RSVP." }
+    }
+
     // 4. The caller's existing RSVP for this event, if any (uniqueOn allows one)
     const mineResult = await tools.query<Rsvp>('rsvps', { where: { eventId, userId }, limit: 1 })
     if (!mineResult.success) return { success: false, error: mineResult.error }

@@ -21,7 +21,7 @@ type MeetupEvent = {
 
 export default function EventsPage() {
   const { isSignedIn } = useAuth()
-  const { records, status } = useQuery<MeetupEvent>('events', { orderBy: 'startsAt' })
+  const { records, status } = useQuery<MeetupEvent>('events', { orderBy: 'startsAt', orderDir: 'asc' })
 
   return (
     <div className="mx-auto max-w-3xl space-y-8 px-4 py-8">
@@ -40,7 +40,7 @@ export default function EventsPage() {
       ) : (
         <ul className="space-y-3">
           {records.map((r) => (
-            <li key={r.recordId} className="rounded-lg border border-border bg-card p-4">
+            <li key={r.recordId} className="rounded-xl border border-border bg-card p-4 shadow-[0_1px_2px_rgba(40,32,120,0.06),0_1px_3px_rgba(40,32,120,0.05)]">
               <h2 className="font-semibold text-foreground">{r.data.title}</h2>
               <p className="text-sm text-muted-foreground">
                 {new Date(r.data.startsAt).toLocaleString()} · {r.data.location}
@@ -52,7 +52,7 @@ export default function EventsPage() {
                 <HostName userId={r.createdBy} />
               </p>
               {r.data.description && <p className="mt-2 text-sm text-foreground">{r.data.description}</p>}
-              <RsvpControls eventId={r.recordId} capacity={r.data.capacity} />
+              <RsvpControls eventId={r.recordId} capacity={r.data.capacity} hostId={r.createdBy} />
             </li>
           ))}
         </ul>
@@ -109,7 +109,7 @@ function CreateEventForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 rounded-lg border border-border bg-card p-5">
+    <form onSubmit={handleSubmit} className="space-y-4 rounded-xl border border-border bg-card p-5 shadow-[0_1px_2px_rgba(40,32,120,0.06),0_1px_3px_rgba(40,32,120,0.05)]">
       <h2 className="font-semibold text-foreground">Create an event</h2>
 
       <div className="space-y-1.5">

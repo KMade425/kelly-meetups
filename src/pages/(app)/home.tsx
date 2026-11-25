@@ -19,7 +19,7 @@ type MeetupEvent = {
 }
 
 export default function HomePage() {
-  const { records, status } = useQuery<MeetupEvent>('events', { orderBy: 'startsAt' })
+  const { records, status } = useQuery<MeetupEvent>('events', { orderBy: 'startsAt', orderDir: 'asc' })
   // Past events stay in the database; the home page only shows what's coming up.
   const upcoming = records.filter((r) => r.data.startsAt >= Date.now())
 
@@ -41,7 +41,7 @@ export default function HomePage() {
               {/* The whole card is a link to that event's page */}
               <Link
                 to={`/event/${r.recordId}`}
-                className="block rounded-lg border border-border bg-card p-4 transition-colors hover:bg-accent"
+                className="block rounded-xl border border-border bg-card p-4 shadow-[0_1px_2px_rgba(40,32,120,0.06),0_1px_3px_rgba(40,32,120,0.05)] transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-[0_8px_24px_-6px_rgba(91,85,224,0.22)]"
               >
                 <h2 className="font-semibold text-foreground">{r.data.title}</h2>
                 <p className="text-sm text-muted-foreground">

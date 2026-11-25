@@ -44,3 +44,61 @@
   --color-shell: #fafafa;
   --color-shell-panel: #ffffff;
 }
+
+/* Meetup — the app's theme: white page, purple for actions (buttons, links,
+ * focus rings), lavender-tinted borders, hovers and shadows to match. */
+[data-theme="meetup"] {
+  color-scheme: light;
+  --color-background: #ffffff;
+  --color-foreground: #1c1a2e;
+  --color-card: #ffffff;
+  --color-card-foreground: #1c1a2e;
+  --color-popover: #ffffff;
+  --color-popover-foreground: #1c1a2e;
+  --color-primary: #5b55e0;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #f3f2fd;
+  --color-secondary-foreground: #3b3699;
+  --color-muted: #f6f5fb;
+  --color-muted-foreground: #5f5d73;
+  --color-accent: #efedfd;
+  --color-accent-foreground: #3b3699;
+  --color-destructive: #dc2626;
+  --color-destructive-foreground: #ffffff;
+  --color-border: #e7e5f3;
+  --color-input: #dcd9ee;
+  --color-ring: #5b55e0;
+  --shadow-card: 0 1px 2px rgba(40, 32, 120, 0.06), 0 1px 3px rgba(40, 32, 120, 0.05);
+  --shadow-card-hover: 0 8px 24px -6px rgba(91, 85, 224, 0.22);
+  --color-shell: #f8f7fd;
+  --color-shell-panel: #ffffff;
+}
+
+/* Meetup dark — the same purple accents on a deep, slightly purple-tinted
+ * background. Picked with the light/dark toggle in the header. */
+[data-theme="meetup-dark"] {
+  color-scheme: dark;
+  --color-background: #0f0e17;
+  --color-foreground: #ecebf5;
+  --color-card: #17162a;
+  --color-card-foreground: #ecebf5;
+  --color-popover: #1b1a2e;
+  --color-popover-foreground: #ecebf5;
+  --color-primary: #7d76f0;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #222038;
+  --color-secondary-foreground: #ecebf5;
+  --color-muted: #1d1b30;
+  --color-muted-foreground: #a19fb8;
+  --color-accent: #272543;
+  --color-accent-foreground: #ecebf5;
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #ffffff;
+  --color-border: #2a2842;
+  --color-input: #34324f;
+  --color-ring: #8b85f0;
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow-card-hover: 0 8px 24px -6px rgba(0, 0, 0, 0.5);
+  --color-shell: #0f0e17;
+  --color-shell-panel: #17162a;
+}

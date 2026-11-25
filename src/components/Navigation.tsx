@@ -16,6 +16,7 @@ import { APP_NAME } from '../constants'
 import type { Role } from '../constants'
 import { nav } from '../nav'
 import { cn } from '../lib/utils'
+import ThemeToggle from './ThemeToggle'
 import {
   Avatar,
   AvatarFallback,
@@ -78,6 +79,8 @@ export default function Navigation() {
           <div className="hidden items-center md:flex">{visibleNav.map(navLink)}</div>
 
           <div className="flex-1" />
+
+          <ThemeToggle />
 
           {!isLoaded ? null : isSignedIn && !profileReady ? (
             /* Signed in, profile still loading — skeleton pill, never the
